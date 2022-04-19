@@ -1,3 +1,4 @@
+
 <div class="display">
   <h1 style="margin: 20px 0;">Hello, your Movie Lists are here!</h1>
   <button type="button" class="btn btn-primary">
@@ -9,7 +10,17 @@
     <ul style="list-style-type:none;">
       <%= link_to list_path(list), class: 'custom' do %>
       <li>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+
+          <% if list.photo.key.nil? %>
+            <%= 'https://unsplash.com/photos/3f04FMm_Jqk' %>
+          <% else %>
+            <%= cl_image_path list.photo.key%>
+          <% end %>
+
+          <%# height: 300, width: 400, crop: :fill %>
+
+          )">
           <%= list.name %>
         </div>
       </li>
